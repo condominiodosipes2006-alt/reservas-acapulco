@@ -7,19 +7,19 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
   :root{
-    --bg:#F1F7F9;
+    --bg:#F3F4F5;
     --panel:#FFFFFF;
     --ink:#2B2620;
     --ink-soft:#6B6455;
-    --green:#0B4F6C;
+    --green:#3B4045;
     --yellow:#F5A623;
     --yellow-deep:#8A5A00;
-    --clay:#D9573B;
-    --clay-deep:#7A2E1D;
-    --line:#CFE0E6;
+    --clay:#B4552F;
+    --clay-deep:#6E2F17;
+    --line:#D5D8DB;
     --ok:#2E6B3E;
     --ok-bg:#E6F0E3;
-    --warn-bg:#E4F1F5;
+    --warn-bg:#ECEEF0;
     --danger:#A32D2D;
     --danger-bg:#FBE7E3;
   }
@@ -102,6 +102,17 @@
   .badge.pendente{background:var(--warn-bg);color:var(--yellow-deep);}
   .badge.aprovado{background:var(--ok-bg);color:var(--ok);}
   .badge.realizado{background:#EDEAE2;color:var(--ink-soft);}
+  .badge.realizado{background:#E6E8EA;color:#5c6168;}
+  tr.linha-realizada td{color:#8a8f95;background:#FAFAFA;}
+  tr.linha-realizada td:first-child::before{content:"✓ ";font-weight:700;}
+  .cal-day.passado{background:rgba(120,125,130,0.2);color:#6b7075;}
+  .cal-day.passado::after{content:"✓";font-size:9px;display:block;line-height:6px;}
+  .hist-box{margin-top:16px;border:1px solid var(--line);border-radius:6px;}
+  .hist-box summary{cursor:pointer;padding:11px 14px;font-weight:600;font-size:13.5px;color:var(--green);}
+  .hist-box .hist-body{padding:6px 14px 14px;}
+  .filtros{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 12px;font-size:13px;color:var(--ink-soft);}
+  .filtros select{font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:5px;background:#fff;}
+  .btn-mais{margin:12px 0 2px;}
   .badge.cancelado{background:var(--danger-bg);color:var(--danger);}
   .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px;}
   .stat{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px 16px;}
@@ -110,7 +121,7 @@
   .stat.entrada .value{color:var(--ok);}
   .stat.saida .value{color:var(--clay-deep);}
   .empty{color:var(--ink-soft);font-size:13.5px;padding:14px 0;}
-  .note{font-size:12.5px;color:var(--ink-soft);background:#F0EBDE;border-radius:4px;padding:10px 12px;margin-bottom:20px;}
+  .note{font-size:12.5px;color:var(--ink-soft);background:#ECEEF0;border-radius:4px;padding:10px 12px;margin-bottom:20px;}
   .rowend{text-align:right;}
   .admin-bar{
     display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
@@ -194,8 +205,8 @@
       <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
         <circle cx="20" cy="20" r="19" fill="none" stroke="#F5A623" stroke-width="2"/>
         <circle cx="20" cy="14" r="5" fill="#F5A623"/>
-        <path d="M7 24 q3.25 -4 6.5 0 t6.5 0 t6.5 0 t6.5 0" stroke="#0B4F6C" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-        <path d="M7 30 q3.25 -4 6.5 0 t6.5 0 t6.5 0 t6.5 0" stroke="#0B4F6C" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <path d="M7 24 q3.25 -4 6.5 0 t6.5 0 t6.5 0 t6.5 0" stroke="#3B4045" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <path d="M7 30 q3.25 -4 6.5 0 t6.5 0 t6.5 0 t6.5 0" stroke="#3B4045" stroke-width="2.2" fill="none" stroke-linecap="round"/>
       </svg>
       <div>
         <h1 id="titulo-principal">Reservas da área de lazer</h1>
@@ -225,10 +236,11 @@
           <label for="r-casa">Número da casa</label>
           <select id="r-casa">
             <option value="">Selecione</option>
-            <option>1</option><option>2</option><option>3</option><option>4</option>
-            <option>5</option><option>6</option><option>7</option><option>8</option>
-            <option>9</option><option>10</option><option>11</option><option>12</option>
-            <option>13</option><option>14</option><option>15</option><option>16</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option>
+            <option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option>
+            <option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option><option>32</option><option>33</option><option>34</option><option>35</option><option>36</option>
+            <option>37</option><option>38</option><option>39</option><option>40</option><option>41</option><option>42</option><option>43</option><option>44</option><option>45</option><option>46</option><option>47</option><option>48</option>
+            <option>49</option><option>50</option><option>51</option><option>52</option><option>53</option><option>54</option><option>55</option><option>56</option><option>57</option><option>58</option><option>59</option><option>60</option>
           </select>
         </div>
         <div class="field">
@@ -254,7 +266,7 @@
           <p style="margin:0;"><span class="t-n4">4</span>. A cumprir os dispostos na Convenção e no Regulamento Interno de uso da área de lazer, sobre os quais tenho total conhecimento. <button type="button" class="link-normas" data-abrir-normas>Ler as normas completas</button></p>
         </div>
         <div id="bloco-pix" style="margin-top:8px; font-size:12.5px; display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-          <span><strong>Chave PIX:</strong> <span id="pix-chave">a informar pela administração</span></span>
+          <span><strong>Chave PIX:</strong> <span id="pix-chave">07.311.029/0001-33</span> (CNPJ)</span>
           <button type="button" class="ghost" id="btn-copiar-pix" style="padding:4px 10px; font-size:11.5px;">Copiar PIX</button>
         </div>
         <label style="display:flex; align-items:flex-start; gap:8px; margin-top:10px; font-size:13px; color:var(--ink); cursor:pointer;">
@@ -297,6 +309,7 @@
       <div style="display:flex; gap:16px; margin-top:14px; font-size:12.5px; color:var(--ink-soft); flex-wrap:wrap;">
         <span><span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#4C9A5A; margin-right:5px;"></span>Livre</span>
         <span><span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#C0453D; margin-right:5px;"></span>Reservado</span>
+        <span><span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#9AA0A6; margin-right:5px;"></span>Já realizado ✓</span>
       </div>
     </div>
 
@@ -365,20 +378,20 @@
 <iframe name="hidden-submit-frame" style="display:none;"></iframe>
 
 <script>
-const FORM_VIEW_URL = 'COLE_AQUI_LINK_DO_FORMULARIO_viewform';
-const FORM_ACTION_URL = 'COLE_AQUI_LINK_DO_FORMULARIO_formResponse';
-const CSV_URL = 'COLE_AQUI_LINK_CSV_DA_PLANILHA';
+const FORM_VIEW_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSckSPVdMRbYVeqIsI5HyMMrzYKSWrn_XZR9puEXD1ddfvYz7w/viewform';
+const FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSckSPVdMRbYVeqIsI5HyMMrzYKSWrn_XZR9puEXD1ddfvYz7w/formResponse';
+const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRp0sj9C-wWmzVZ7HgifvgkPup1Tixr5tVT0D9aL9WaX_jxKTeZMoBhEGKDPCpE_XLaLdR7Us3yxcGV/pub?gid=107029064&single=true&output=csv';
 
 const ENTRY = {
-  nome: 'entry.COLE_AQUI',
-  email: 'entry.COLE_AQUI',
-  casa: 'entry.COLE_AQUI',
-  data: 'entry.COLE_AQUI',
-  espaco: 'entry.COLE_AQUI',
-  horario: 'entry.COLE_AQUI',
-  observacao: 'entry.COLE_AQUI',
-  aceite: 'entry.COLE_AQUI',
-  assinatura: 'entry.COLE_AQUI'
+  nome: 'entry.829629047',
+  email: 'entry.567830781',
+  casa: 'entry.817989994',
+  data: 'entry.1262319291',
+  espaco: 'entry.1096931243',
+  horario: 'entry.1304627455',
+  observacao: 'entry.462708229',
+  aceite: 'entry.1277447217',
+  assinatura: 'entry.1021017291'
 };
 
 const ADMIN_SENHA = '2026';
@@ -462,6 +475,27 @@ function parseCSV(texto){
 
 let reservas = [];
 
+function statusEfetivo(r){
+  if(String(r.status || '').trim().toLowerCase() === 'cancelado') return 'Cancelado';
+  return (r.data && r.data < hojeISO()) ? 'Realizado' : 'Aprovado';
+}
+function ymDe(r){ return (r.data || '').slice(0, 7); }
+function ymLabel(ym){
+  const p = ym.split('-'); const m = parseInt(p[1], 10) - 1;
+  return (MESES[m] || ym) + ' de ' + p[0];
+}
+function opcoesMes(lista, selecionado, todosRotulo){
+  const set = Array.from(new Set(lista.map(ymDe).filter(Boolean))).sort().reverse();
+  let h = '<option value="">' + todosRotulo + '</option>';
+  set.forEach(ym => { h += '<option value="' + ym + '"' + (ym === selecionado ? ' selected' : '') + '>' + ymLabel(ym) + '</option>'; });
+  return h;
+}
+// estado das listas
+let pubLimite = 10, pubHistAberto = false, pubHistMes = '', pubHistLimite = 10;
+let admFiltro = 'proximas', admMes = '', admLimite = 20;
+let finMes = '', finLimite = 20;
+
+
 // Pendentes ficam salvas no navegador (localStorage), sobrevivendo a atualizações de página (F5),
 // até serem confirmadas na planilha.
 const LOCAL_KEY = 'acapulco-reservas-pendentes';
@@ -515,7 +549,7 @@ async function carregarReservas(){
     salvarPendentesLocal(reservasLocaisPendentes);
 
     // A planilha é a fonte da verdade + o que ainda está pendente de aparecer nela
-    reservas = daPlanilha.concat(reservasLocaisPendentes);
+    reservas = daPlanilha.concat(reservasLocaisPendentes).map(r => Object.assign({}, r, { status: statusEfetivo(r) }));
   }catch(e){
     // Se der erro de leitura, mantém o que já estava na tela (não apaga nada)
   }
@@ -524,6 +558,17 @@ async function carregarReservas(){
   renderFinanceiro();
 }
 
+function linhaPublico(r, realizada){
+  let h = '<tr' + (realizada ? ' class="linha-realizada"' : '') + '>';
+  h += '<td>' + fmtDate(r.data) + '</td>';
+  h += '<td>' + escapeHtml(r.casa || '—') + '</td>';
+  h += '<td>' + escapeHtml(r.morador) + '</td>';
+  h += '<td>' + escapeHtml(r.espaco) + '</td>';
+  h += '<td>' + escapeHtml(r.horario || '—') + '</td>';
+  h += '<td><span class="badge ' + r.status.toLowerCase() + '">' + r.status + '</span></td>';
+  return h + '</tr>';
+}
+const CAB_PUBLICO = '<table><thead><tr><th>Data</th><th>Casa</th><th>Morador</th><th>Espaço</th><th>Horário</th><th>Status</th></tr></thead><tbody>';
 function renderPublico(){
   const list = document.getElementById('r-list-publico');
   const ativas = reservas.filter(r => r.status !== 'Cancelado');
@@ -531,19 +576,32 @@ function renderPublico(){
     list.innerHTML = '<div class="empty">Nenhuma reserva registrada ainda.</div>';
     return;
   }
-  const sorted = [...ativas].sort((a,b) => (a.data || '').localeCompare(b.data || ''));
-  let html = '<table><thead><tr><th>Data</th><th>Casa</th><th>Morador</th><th>Espaço</th><th>Horário</th><th>Status</th></tr></thead><tbody>';
-  sorted.forEach(r => {
-    html += '<tr>';
-    html += '<td>' + fmtDate(r.data) + '</td>';
-    html += '<td>' + escapeHtml(r.casa || '—') + '</td>';
-    html += '<td>' + escapeHtml(r.morador) + '</td>';
-    html += '<td>' + escapeHtml(r.espaco) + '</td>';
-    html += '<td>' + escapeHtml(r.horario || '—') + '</td>';
-    html += '<td><span class="badge ' + r.status.toLowerCase() + '">' + r.status + '</span></td>';
-    html += '</tr>';
-  });
-  html += '</tbody></table>';
+  const hoje = hojeISO();
+  const prox = ativas.filter(r => (r.data || '') >= hoje).sort((a,b) => (a.data || '').localeCompare(b.data || ''));
+  const pass = ativas.filter(r => (r.data || '') < hoje).sort((a,b) => (b.data || '').localeCompare(a.data || ''));
+  let html = '';
+  if(prox.length === 0){
+    html += '<div class="empty">Nenhuma reserva futura. Todas as datas estão livres.</div>';
+  }else{
+    html += CAB_PUBLICO;
+    prox.slice(0, pubLimite).forEach(r => { html += linhaPublico(r, false); });
+    html += '</tbody></table>';
+    if(prox.length > pubLimite){
+      html += '<button type="button" class="ghost btn-mais" onclick="pubLimite+=10;renderPublico()">Ver mais (' + (prox.length - pubLimite) + ' restantes)</button>';
+    }
+  }
+  if(pass.length > 0){
+    const doMes = pubHistMes ? pass.filter(r => ymDe(r) === pubHistMes) : pass;
+    html += '<details class="hist-box"' + (pubHistAberto ? ' open' : '') + ' ontoggle="pubHistAberto=this.open"><summary>Reservas realizadas (' + pass.length + ')</summary><div class="hist-body">';
+    html += '<div class="filtros"><label>Mês: <select onchange="pubHistMes=this.value;pubHistLimite=10;renderPublico()">' + opcoesMes(pass, pubHistMes, 'Todos os meses') + '</select></label></div>';
+    html += CAB_PUBLICO;
+    doMes.slice(0, pubHistLimite).forEach(r => { html += linhaPublico(r, true); });
+    html += '</tbody></table>';
+    if(doMes.length > pubHistLimite){
+      html += '<button type="button" class="ghost btn-mais" onclick="pubHistLimite+=10;renderPublico()">Ver mais (' + (doMes.length - pubHistLimite) + ' restantes)</button>';
+    }
+    html += '</div></details>';
+  }
   list.innerHTML = html;
 }
 
@@ -553,10 +611,29 @@ function renderAdmin(){
     list.innerHTML = '<div class="empty">Nenhuma reserva registrada ainda.</div>';
     return;
   }
-  const sorted = [...reservas].sort((a,b) => (a.data || '').localeCompare(b.data || ''));
-  let html = '<table><thead><tr><th>Data</th><th>Casa</th><th>Morador</th><th>E-mail</th><th>Espaço</th><th>Horário</th><th>Observação</th><th>Taxa</th><th>Aceite</th><th>Taxa paga</th><th>Status</th></tr></thead><tbody>';
-  sorted.forEach(r => {
-    html += '<tr>';
+  const hoje = hojeISO();
+  let base = reservas.slice();
+  if(admFiltro === 'proximas') base = base.filter(r => r.status !== 'Cancelado' && (r.data || '') >= hoje);
+  else if(admFiltro === 'realizadas') base = base.filter(r => r.status === 'Realizado');
+  else if(admFiltro === 'canceladas') base = base.filter(r => r.status === 'Cancelado');
+  const mesesBase = base;
+  if(admMes) base = base.filter(r => ymDe(r) === admMes);
+  const asc = admFiltro === 'proximas';
+  base.sort((a,b) => asc ? (a.data || '').localeCompare(b.data || '') : (b.data || '').localeCompare(a.data || ''));
+  let html = '<div class="filtros"><label>Mostrar: <select onchange="admFiltro=this.value;admMes=\'\';admLimite=20;renderAdmin()">'
+    + '<option value="proximas"' + (admFiltro==='proximas'?' selected':'') + '>Próximas</option>'
+    + '<option value="realizadas"' + (admFiltro==='realizadas'?' selected':'') + '>Realizadas</option>'
+    + '<option value="canceladas"' + (admFiltro==='canceladas'?' selected':'') + '>Canceladas</option>'
+    + '<option value="todas"' + (admFiltro==='todas'?' selected':'') + '>Todas</option></select></label>'
+    + '<label>Mês: <select onchange="admMes=this.value;admLimite=20;renderAdmin()">' + opcoesMes(mesesBase, admMes, 'Todos os meses') + '</select></label>'
+    + '<span>' + base.length + ' reserva(s)</span></div>';
+  if(base.length === 0){
+    list.innerHTML = html + '<div class="empty">Nenhuma reserva neste filtro.</div>';
+    return;
+  }
+  html += '<table><thead><tr><th>Data</th><th>Casa</th><th>Morador</th><th>E-mail</th><th>Espaço</th><th>Horário</th><th>Observação</th><th>Taxa</th><th>Aceite</th><th>Taxa paga</th><th>Status</th></tr></thead><tbody>';
+  base.slice(0, admLimite).forEach(r => {
+    html += '<tr' + (r.status === 'Realizado' ? ' class="linha-realizada"' : '') + '>';
     html += '<td>' + fmtDate(r.data) + '</td>';
     html += '<td>' + escapeHtml(r.casa || '—') + '</td>';
     html += '<td>' + escapeHtml(r.morador) + '</td>';
@@ -571,6 +648,9 @@ function renderAdmin(){
     html += '</tr>';
   });
   html += '</tbody></table>';
+  if(base.length > admLimite){
+    html += '<button type="button" class="ghost btn-mais" onclick="admLimite+=20;renderAdmin()">Mostrar mais (' + (base.length - admLimite) + ' restantes)</button>';
+  }
   list.innerHTML = html;
 }
 
@@ -593,9 +673,11 @@ function renderFinanceiro(){
     list.innerHTML = '<div class="empty">Nenhuma reserva de Churrasqueira e Salão registrada ainda.</div>';
     return;
   }
-  const sorted = [...cobrancas].sort((a,b) => (b.data || '').localeCompare(a.data || ''));
-  let html = '<table><thead><tr><th>Data</th><th>Casa</th><th>Morador</th><th class="rowend">Valor</th><th>Pago?</th></tr></thead><tbody>';
-  sorted.forEach(r => {
+  const filtrado = finMes ? cobrancas.filter(r => ymDe(r) === finMes) : cobrancas;
+  const sorted = [...filtrado].sort((a,b) => (b.data || '').localeCompare(a.data || ''));
+  let html = '<div class="filtros"><label>Mês: <select onchange="finMes=this.value;finLimite=20;renderFinanceiro()">' + opcoesMes(cobrancas, finMes, 'Todos os meses') + '</select></label><span>' + filtrado.length + ' cobrança(s)</span></div>';
+  html += '<table><thead><tr><th>Data</th><th>Casa</th><th>Morador</th><th class="rowend">Valor</th><th>Pago?</th></tr></thead><tbody>';
+  sorted.slice(0, finLimite).forEach(r => {
     html += '<tr>';
     html += '<td>' + fmtDate(r.data) + '</td>';
     html += '<td>' + escapeHtml(r.casa || '—') + '</td>';
@@ -605,6 +687,9 @@ function renderFinanceiro(){
     html += '</tr>';
   });
   html += '</tbody></table>';
+  if(sorted.length > finLimite){
+    html += '<button type="button" class="ghost btn-mais" onclick="finLimite+=20;renderFinanceiro()">Mostrar mais (' + (sorted.length - finLimite) + ' restantes)</button>';
+  }
   list.innerHTML = html;
 }
 
@@ -635,7 +720,7 @@ function renderCalendario(){
     const iso = calAnoAtual + '-' + mesStr + '-' + diaStr;
     const ocupado = diasOcupados.has(iso);
     const ehHoje = iso === hoje;
-    html += '<div class="cal-day' + (ehHoje ? ' hoje' : '') + ' ' + (ocupado ? 'ocupado' : 'livre') + '">' + dia + '</div>';
+    html += '<div class="cal-day' + (ehHoje ? ' hoje' : '') + ' ' + (ocupado ? (iso < hoje ? 'passado' : 'ocupado') : 'livre') + '">' + dia + '</div>';
   }
   html += '</div>';
   document.getElementById('cal-grid').innerHTML = html;
@@ -656,7 +741,7 @@ document.getElementById('cal-next').addEventListener('click', () => {
 const EMAILJS_PUBLIC_KEY = 'COLE_AQUI_PUBLIC_KEY';
 const EMAILJS_SERVICE_ID = 'COLE_AQUI_SERVICE';
 const EMAILJS_TEMPLATE_ID = 'COLE_AQUI_TEMPLATE';
-const EMAIL_CONDOMINIO = 'COLE_AQUI_EMAIL_DO_CONDOMINIO';
+const EMAIL_CONDOMINIO = 'res.acapulco@gmail.com';
 
 try{
   if(window.emailjs && EMAILJS_PUBLIC_KEY.indexOf('COLE_AQUI') === -1){
@@ -941,7 +1026,7 @@ document.getElementById('btn-sair-admin').addEventListener('click', () => mostra
 carregarReservas();
 
 // ---- Normas de conduta (leitura) ----
-const NORMAS = {"preambulo": "Trechos do Regimento Interno do Condomínio Acapulco (aprovado em Assembleia Geral Extraordinária de 12/05/2021 e registrado em cartório em 20/01/2022) que tratam da área de lazer. Vale o texto integral do Regimento, que está com a Administração.", "capitulos": [{"t": "Normas gerais (Art. 22 a 24)", "a": ["Art. 22. O condômino usuário das áreas comuns (salão de festas, churrasqueira, bosque, play ground e campo) deverá orientar seus convidados no sentido de que não utilizem outras áreas comuns do condomínio que não façam parte de sua extensão, com exceção do playground.", "Parágrafo único – As pessoas convidadas para utilizarem as áreas comuns deverão estacionar seus veículos no estacionamento externo do condomínio, pois no interior está limitada a 10 (dez) veículos.", "Art. 23. É proibido:\na) Fumar nas áreas fechadas do condomínio;\nb) O uso de patins, skates e bicicletas onde existe piso cerâmico;\nc) Reservas aos domingos e feriados;\nd) O uso do espaço do salão de festas e churrasqueira pelo condômino quando a unidade estiver alugada para outro condômino, tendo este o direito de uso, respeitando as regras internas;\ne) O uso de carro automotivo e aparelhos sonoros em volume alto ou outra forma que possa incomodar os demais condôminos;\nf) A permanência de convidados no condomínio sem a presença do condômino anfitrião, exceto o hóspede cadastrado na forma do art. 6º, § 2º, deste Regimento;\ng) Fazer uso dos espaços quiosques, caramanchões, pergolados, e bosque para eventos, como churrascos, festas, e reuniões que possam intimidar o uso pelos demais condôminos;\nh) O estacionamento de veículo sobre a grama ou área de lazer, sendo permitida a entrada sob o passeio até o Salão de Festas somente para descarga e coleta de materiais para o(s) evento(s), devendo ser retirado após o serviço;\ni) O funcionário entrar de veículo (carro, moto ou bicicleta) acompanhado;\nj) O uso de veículos para atividades pornográficas.", "Art. 24. Exceto quanto autorizado pela administração fica vedado o uso dos espaços para comemorações particulares dos condôminos nas seguintes datas tradicionais:\na) Véspera e dia de Natal;\nb) Véspera e dia de Ano-Novo;\nc) Dia de carnaval;\nd) Dia das mães;\ne) Dia das crianças;\nf) Dia dos pais."]}, {"t": "Da reserva (Art. 25 a 33)", "a": ["Art. 25. A reserva de qualquer área de lazer só será permitida se o condômino estiver quite com suas obrigações condominiais.", "Art. 26. O requisitante assumirá, para todos os efeitos legais, a responsabilidade pela manutenção do respeito e das boas normas de conduta e convivência social no decorrer das atividades, comprometendo-se a reprimir abusos e excessos e a afastar pessoas cuja presença seja considerada inconveniente.", "Art. 27. Para realizar a reserva do dia e horário para o uso da área útil, o condômino deverá procurar a Administração para agendamento de uso com antecedência mínima de 15 (quinze) dias, com pedido escrito, salvo se houver data em tempo menor, além de estar em dia com a taxa de condomínio.", "Art. 28. A solicitação de reserva será numerada sequencialmente e o pagamento da taxa de conservação será realizado através de boleto bancário emitido em nome do condomínio com vencimento para até dois dias antes da data do evento. Em caso de desistência terá direito a remarcar outra data para evento posterior, não sendo restituído qualquer valor.", "Art. 29. A taxa de conservação do salão de festas será de 50% (cinquenta por cento) do valor da taxa de condomínio.", "Art. 30. O uso do espaço do salão de festas e churrasqueira estão condicionados à prévia assinatura, por parte do proprietário responsável, de um termo de responsabilidade, onde ficará expressamente consignado haver recebido as referidas dependências e utensílios cedidos pelo condomínio para tal fim em perfeitas condições de uso. Assumirá integralmente o ônus de qualquer dano que venha ser registrado desde a entrega do espaço, inclusive os causados por familiares, convidados, prepostos, pessoal contratado e empregados.", "Art. 31. O condômino que realizar a reserva para o uso dos espaços, com o devido agendamento, pagamento da taxa de reserva, terá a exclusividade de utilização dos referidos espaços, não podendo ceder a terceiro para qualquer tipo de evento, ressalvadas as exceções previstas neste regimento.", "Art. 32. O condômino ou morador responsável deve enviar à portaria, com 24 horas de antecedência, lista completa com nomes de seus convidados e empregados contratados para a ocasião.", "Art. 33. Os usuários do salão de festas e Churrasqueira deverão respeitar os níveis de som – decibéis – indicados pelas normas legais, sobretudo nos horários noturnos."]}, {"t": "Do salão de festas (Art. 34 a 42)", "a": ["Art. 34. O tempo de duração da reserva será até às 2h (duas horas) da manhã – de acordo com a lei municipal – para a utilização dos espaços deve ser respeitado sob pena de imposição de penalidades.", "Art. 35. O Salão de Festa poderá ser utilizado exclusivamente para eventos dos condôminos proprietários/locatários e seus parentes de 1º grau, desde que estejam quites com as suas obrigações condominiais e mediante o preenchimento do formulário de utilização, designando o dia e a hora em que irá fazer uso do mesmo, os quais ficarão sob sua inteira responsabilidade, incluindo os móveis e equipamentos existentes no local. Os espaços também poderão ser utilizados por moradores que residam com o proprietário, desde que cadastrados há pelo menos 3 (três) meses junto à Administração. Deverá ser respeitado o limite de convidados, sendo até 100 pessoas. As reservas também poderão ser feitas para os netos, sendo que a reserva só poderá ser efetivada com no mínimo de 15 dias de antecedência, dando prioridade para eventos de condôminos.", "Art. 36. A requisição do salão de festas só poderá ser feita por proprietários/locatários para promoção de atividades sociais, jantares, recepção e aniversários, ou seja, eventos compatíveis com a capacidade e estrutura do local, sendo vedada a reserva das áreas para atividades políticas ou partidárias, religiosas, mercantis e jogos considerados de azar pela legislação pertinente.", "Art. 37. No referido espaço o uso de aparelhos sonoros deve ser feito com moderação em observância à Lei do silêncio, sujeitando-se às sanções penais, civis e administrativas.", "Art. 38. Só será permitida a montagem de brinquedos recreativos (pula-pula, piscina de bolinhas etc.) na área externa do salão.", "Art. 39. Não será permitida a perfuração de tetos e paredes do Salão de Festas, bem como colagem de painéis e adesivos para fixação de arranjos decorativos, ficando os reparos de eventuais danos a cargo do usuário que fez a reserva podendo incorrer em sanção por descumprimento.", "Art. 40. Ao término do uso, o condômino responsável, em conjunto com um funcionário designado pela Administração, efetuará uma conferência das instalações e equipamentos das áreas utilizadas.", "Art. 41. É proibido:\na) Fumar na área interna do Salão de Festas, mesmo com portas e janelas abertas;\nb) A entrada, permanência e circulação de qualquer animal.", "Art. 42. As centrais de ar condicionado serão ligadas somente com 1h (uma hora) de antecedência do evento."]}, {"t": "Das churrasqueiras (Art. 43 a 47)", "a": ["Art. 43. O horário de funcionamento será das 10h (dez horas) às 22h (vinte e três horas) de domingo a quinta-feira, sexta-feira, sábados e véspera de feriados até 2h (duas horas).", "Art. 44. As churrasqueiras destinam-se ao uso dos condôminos e seus visitantes, devendo ser respeitado o limite de até no máximo 10 visitantes por evento. O condômino que desejar utilizá-la deverá fazer a sua reserva em agenda existente na Administração com até 48h (quarenta e oito horas) de antecedência.", "Art. 45. Na hipótese de desistência do uso, para que outros eventuais interessados possam utilizá-la, a mesma deverá ser comunicada com no mínimo 48h (quarenta e oito horas) de antecedência.", "Art. 46. A utilização de qualquer aparelho que produza som deve ser suspensa após as 22h (vinte e duas horas) de domingo a quinta feira.", "Art. 47. O condômino deverá tomar as providências necessárias para que o ruído oriundo de seus convidados não seja elevado a ponto de perturbar o sossego dos demais moradores, principalmente após as 22h (vinte e duas horas)."]}, {"t": "Das piscinas (Art. 48 a 59)", "a": ["Art. 48. A utilização da piscina é permitida apenas das 05h (cinco horas) às 22h (vinte e três horas) de terça-feira a domingo e feriados.", "Art. 49. O uso da piscina é privativo dos condôminos e seus convidados.", "Art. 50. Os danos causados quando da utilização da piscina por convidados serão de responsabilidade do respectivo condômino anfitrião.", "Art. 51. A piscina permanecerá fechada para fins de limpeza, manutenção e tratamento de água, um dia por semana, segunda-feira, exceto quando coincidir com feriado.", "Art. 52. A Administração, por necessidade, poderá modificar os dias e horários de funcionamento da piscina, devendo afixar nos quadros de aviso as alterações realizadas.", "Art. 53. É proibido:\na) O uso das piscinas por portadores de moléstia infectocontagiosas ou transmissível, devendo a Administração, quando entender necessário, exigir atestado médico dos usuários;\nb) O uso da piscina por pessoas suadas, untadas com óleo de bronzear ou qualquer produto similar que possa prejudicar o correto funcionamento das bombas, filtro nelas existentes e que possam comprometer a qualidade, limpidez da água ou agregar-se nos azulejos da piscina;\nd) A entrada, permanência e circulação de qualquer animal;\ne) O uso de aparelhos sonoros. Somente será permitido o uso de tais aparelhos com fone de ouvido na área da piscina, a fim de não prejudicar sossego dos demais usuários;\nf) A utilização da piscina para a promoção de festas de qualquer natureza, sendo vedada também a utilização de garrafas, bebidas alcoólicas, ou outros utensílios de vidro nas dependências da piscina e/ou suas imediações;\ng) A prática de jogos esportivos na piscina tais como, frescobol, peteca, bola ou qualquer outro que possa interferir na segurança, sossego ou bem-estar dos demais usuários;\nh) O uso de pranchas e boias que apresentem perigo aos demais usuários, aparelhos de mergulho e/ou acessórios, como nadadeiras etc.;\ni) A utilização da piscina por menores de 10 (dez) anos desacompanhados de pais ou responsáveis;\nl) O ingresso de pessoas em trajes desapropriados na piscina;\nn) Fumar nas piscinas.", "Art. 54. Os usuários da piscina que se comportarem de forma atentatória à moral e aos bons costumes serão retirados da mesma.", "Art. 55. Os equipamentos e demais pertences da piscina constituem patrimônio do condomínio, a todos cabendo a responsabilidade, o zelo e a guarda pelo bem.", "Art. 56. Os móveis e utensílios da piscina (espreguiçadeiras, cadeiras, mesas, etc.) não poderão ser retirados nem utilizados para fins diversos daqueles a que se destinam de suas imediações.", "Art. 57. A Administração tem plenos poderes para tomar as medidas que julgar convenientes para a manutenção da ordem no uso da piscina.", "Art. 58. Os usuários deverão utilizar a ducha e o lava-pés antes de ingressarem na piscina.", "Art. 59. Incumbe a Administração determinar as providências necessárias para o tratamento adequado da água da piscina, a fim de mantê-la permanentemente em grau recomendado de pureza."]}, {"t": "Do campo de futebol e areia (Art. 60 a 71)", "a": ["Art. 60. As áreas de esportes estarão disponíveis para reserva de segunda a sábado das 06h às 22h. Domingos e feriados são destinados somente aos condôminos.\n§ 1º - Para proceder com a reserva deverá solicitar à administração informando a área, data e hora desejada, desde que a data não ultrapasse a semana em que foi feita a solicitação. Será respondido confirmando a reserva ou negando-a, informando os demais horários disponíveis para que o condômino possa escolher outro horário.", "Art. 61. O uso é exclusivo dos condôminos titulares ou moradores, dependentes e seus hóspedes, sendo proibida sua utilização por empregados ou pessoas estranhas ao condomínio.", "Art. 62. O condômino que deseja levar convidados para a prática de esportes deverá informar na portaria com antecedência mínima de 24h (vinte e quatro horas) a lista dos seus convidados.", "Art. 63. Contando com o condômino anfitrião, o limite máximo de jogadores é de:\na) 12 (doze) pessoas para a quadra de areia;\nb) 20 (vinte) pessoas para o campo.", "Art. 64. Os jogos serão realizados de acordo com a exigência da maioria dos condôminos presentes no horário.", "Art. 65. O condômino que desejar utilizar a área deverá solicitar ao funcionário da Administração para que este providencie a abertura da mesma para a sua utilização.", "Art. 66. É proibido:\na) A entrada, permanência e circulação de qualquer animal nestas áreas;\nb) Perturbar o sossego dos demais moradores durante o uso da quadra e campo;\nc) O uso de aparelhos sonoros;\nd) O uso ou porte de garrafas, copos ou de quaisquer outros utensílios de vidro, bem como qualquer tipo de alimento;\ne) O uso da quadra para outras finalidades que não sejam aquelas especificamente a que se destinam, salvo quando entender a Administração.", "Art. 67. No uso do campo não é permitida chuteira que não sejam a society.", "Art. 68. O condomínio, excepcionalmente, poderá determinar a interdição do campo e quadra por ocasião de eventos especiais, bem como prorrogar ou reduzir o horário de utilização do(s) mesmo(s) por motivos que entender justificável.", "Art. 69. Visando a utilização das áreas por outros condôminos, o tempo de cada atividade por determinado grupo de proprietários ou moradores não poderá ser superior a 01h (uma hora), salvo quando não houver outros que queiram utilizá-la.", "Art. 70. Em hipótese alguma poderá haver convidados na quadra e campo sem que o condômino anfitrião esteja presente no local.", "Art. 71. Não poderá haver torneios e jogos cujos integrantes não sejam proprietários ou moradores do condomínio."]}, {"t": "Penalidades e danos (Art. 72 a 78)", "a": ["Art. 72. O descumprimento de qualquer das normas da Convenção, deste Regimento e das decisões do síndico ou dos conselhos publicadas, poderá gerar, contra o faltoso:\na) Advertência;\nb) A imposição de multa de 20% (vinte por cento) a 02 (duas) vezes a taxa de condomínio;\nc) A reiterada prática de atos que caracterizem descumprimento de qualquer das normas poderá gerar, contra o faltoso, a imposição de multa em dobro a anteriormente aplicada;\nd) Suspensão do direito de reserva e/ou uso por 03 (três) a 12 (doze) meses.", "Art. 73. A autuação da infração a qualquer destas normas será feita pelo síndico.", "Art. 74. É assegurado o direito de defesa perante o Conselho Administrativo, cuja petição deverá ser protocolada no prazo de 05 (cinco) dias da comunicação da autuação junto à Administração.", "Art. 75. Não havendo recurso da infração, será cobrado o valor da multa junto com a próxima taxa de condomínio.", "Art. 76. Os danos eventualmente causados pelo condômino infrator ou seus convidados, às instalações do Salão de Festas, Piscinas, Churrasqueiras, Playground, redes do campo, colunas, lâmpadas, alambrado, ruas, etc., deverão ser reparados à custa do condômino responsável pela reserva do local para o evento, cujo valor será apurado pela Administração, sendo obrigatório o pagamento na primeira cobrança da taxa de condomínio.", "Art. 77. A avaliação dos prejuízos causados ao condomínio, para efeito de ressarcimento, será feito por análise de três orçamentos escolhidos e aprovados pelo Conselho Administrativo. A entrega do serviço/bem deverá ser feita para a administração.", "Art. 78. A recusa do pagamento relativo ao ressarcimento das despesas havidas com a reparação dos danos causados acarretará, além de incidência de correção monetária, o acréscimo de 1% (um por cento) de juros ao mês sobre o montante dos danos apurados e a cobrança judicial do débito, com o pagamento de custos de 20% (vinte por cento) a título de honorários advocatícios, bem como a perda do direito de requisição do Salão de Festas e Churrasqueira até o cumprimento das obrigações.\nParágrafo único. Os honorários advocatícios não poderão ser inferiores ao previsto na tabela do OAB. Em qualquer caso a porcentagem dos honorários não poderá ser inferior a (01) um salário mínimo."]}, {"t": "Estacionamento e animais na área de lazer (Art. 85, 86 e 90)", "a": ["Art. 85. É proibido o estacionamento ou circulação irregular de veículos em desobediência à sinalização interna estabelecida. Multa de 50% (cinquenta por cento) da taxa de condomínio.\n§ 1º - O estacionamento da área de lazer é rotativo, podendo o veículo permanecer na área pelo prazo máximo de três dias.\n§ 2º - O estacionamento na área de lazer será para até 10 veículos, sendo que os demais deverão estacionar na área externa.\n§ 3º - O estacionamento será permitido apenas do lado da área de lazer e desde que não atrapalhe a saída de veículos.\n§ 4º - O morador deverá estacionar o veículo na sua garagem. Nas residências que hoje não possuem garagem o condômino, prestador de serviço e seu visitante provisório poderão estacionar na porta de seu imóvel, exceto em frente à saída da garagem do morador do outro lado da rua.\n§ 5º - O hóspede deverá estacionar o veículo na garagem do condômino anfitrião ou no estacionamento da área de lazer.", "Art. 86. É proibido o estacionamento de veículo sob as calçadas, grama da área de lazer e passarela de acesso ao Salão de Festas. Multa de 20% (vinte por cento) a 2 (duas) taxas condominiais.", "Art. 90. É proibido o trânsito de animais na área de lazer. Multa de 30% (trinta por cento) do valor da taxa de condomínio por animal. Em caso de reincidência será cobrado o dobro."]}], "rodape": "Fonte: Regimento Interno do Condomínio Acapulco · Imperatriz/MA"};
+const NORMAS = {"preambulo": "Trechos do Regimento Interno do Condomínio Acapulco (aprovado em Assembleia Geral Extraordinária de 12/05/2021 e registrado em cartório em 20/01/2022) que tratam da área de lazer. Vale o texto integral do Regimento, que está com a Administração.", "capitulos": [{"t": "Normas gerais (Art. 22 a 24)", "a": ["Art. 22. O condômino usuário das áreas comuns (salão de festas, churrasqueira, bosque, play ground e campo) deverá orientar seus convidados no sentido de que não utilizem outras áreas comuns do condomínio que não façam parte de sua extensão, com exceção do playground.", "Parágrafo único – As pessoas convidadas para utilizarem as áreas comuns deverão estacionar seus veículos no estacionamento externo do condomínio, pois no interior está limitada a 10 (dez) veículos.", "Art. 23. É proibido:\na) Fumar nas áreas fechadas do condomínio;\nb) O uso de patins, skates e bicicletas onde existe piso cerâmico;\nc) Reservas aos domingos e feriados;\nd) O uso do espaço do salão de festas e churrasqueira pelo condômino quando a unidade estiver alugada para outro condômino, tendo este o direito de uso, respeitando as regras internas;\ne) O uso de carro automotivo e aparelhos sonoros em volume alto ou outra forma que possa incomodar os demais condôminos;\nf) A permanência de convidados no condomínio sem a presença do condômino anfitrião, exceto o hóspede cadastrado na forma do art. 6º, § 2º, deste Regimento;\ng) Fazer uso dos espaços quiosques, caramanchões, pergolados, e bosque para eventos, como churrascos, festas, e reuniões que possam intimidar o uso pelos demais condôminos;\nh) O estacionamento de veículo sobre a grama ou área de lazer, sendo permitida a entrada sob o passeio até o Salão de Festas somente para descarga e coleta de materiais para o(s) evento(s), devendo ser retirado após o serviço;\ni) O funcionário entrar de veículo (carro, moto ou bicicleta) acompanhado;\nj) O uso de veículos para atividades pornográficas.", "Art. 24. Exceto quanto autorizado pela administração fica vedado o uso dos espaços para comemorações particulares dos condôminos nas seguintes datas tradicionais:\na) Véspera e dia de Natal;\nb) Véspera e dia de Ano-Novo;\nc) Dia de carnaval;\nd) Dia das mães;\ne) Dia das crianças;\nf) Dia dos pais."]}, {"t": "Da reserva (Art. 25 a 33)", "a": ["Art. 25. A reserva de qualquer área de lazer só será permitida se o condômino estiver quite com suas obrigações condominiais.", "Art. 26. O requisitante assumirá, para todos os efeitos legais, a responsabilidade pela manutenção do respeito e das boas normas de conduta e convivência social no decorrer das atividades, comprometendo-se a reprimir abusos e excessos e a afastar pessoas cuja presença seja considerada inconveniente.", "Art. 27. Para realizar a reserva do dia e horário para o uso da área útil, o condômino deverá procurar a Administração para agendamento de uso com antecedência mínima de 15 (quinze) dias, com pedido escrito, salvo se houver data em tempo menor, além de estar em dia com a taxa de condomínio.", "Art. 28. A solicitação de reserva será numerada sequencialmente e o pagamento da taxa de conservação será realizado através de boleto bancário emitido em nome do condomínio com vencimento para até dois dias antes da data do evento. Em caso de desistência terá direito a remarcar outra data para evento posterior, não sendo restituído qualquer valor.", "Art. 29. A taxa de conservação do salão de festas será de 50% (cinquenta por cento) do valor da taxa de condomínio.", "Art. 30. O uso do espaço do salão de festas e churrasqueira estão condicionados à prévia assinatura, por parte do proprietário responsável, de um termo de responsabilidade, onde ficará expressamente consignado haver recebido as referidas dependências e utensílios cedidos pelo condomínio para tal fim em perfeitas condições de uso. Assumirá integralmente o ônus de qualquer dano que venha ser registrado desde a entrega do espaço, inclusive os causados por familiares, convidados, prepostos, pessoal contratado e empregados.", "Art. 31. O condômino que realizar a reserva para o uso dos espaços, com o devido agendamento, pagamento da taxa de reserva, terá a exclusividade de utilização dos referidos espaços, não podendo ceder a terceiro para qualquer tipo de evento, ressalvadas as exceções previstas neste regimento.", "Art. 32. O condômino ou morador responsável deve enviar à portaria, com 24 horas de antecedência, lista completa com nomes de seus convidados e empregados contratados para a ocasião.", "Art. 33. Os usuários do salão de festas e Churrasqueira deverão respeitar os níveis de som – decibéis – indicados pelas normas legais, sobretudo nos horários noturnos."]}, {"t": "Do salão de festas (Art. 34 a 42)", "a": ["Art. 34. O tempo de duração da reserva será até às 2h (duas horas) da manhã – de acordo com a lei municipal – para a utilização dos espaços deve ser respeitado sob pena de imposição de penalidades.", "Art. 35. O Salão de Festa poderá ser utilizado exclusivamente para eventos dos condôminos proprietários/locatários e seus parentes de 1º grau, desde que estejam quites com as suas obrigações condominiais e mediante o preenchimento do formulário de utilização, designando o dia e a hora em que irá fazer uso do mesmo, os quais ficarão sob sua inteira responsabilidade, incluindo os móveis e equipamentos existentes no local. Os espaços também poderão ser utilizados por moradores que residam com o proprietário, desde que cadastrados há pelo menos 3 (três) meses junto à Administração. Deverá ser respeitado o limite de convidados, sendo até 100 pessoas. As reservas também poderão ser feitas para os netos, sendo que a reserva só poderá ser efetivada com no mínimo de 15 dias de antecedência, dando prioridade para eventos de condôminos.", "Art. 36. A requisição do salão de festas só poderá ser feita por proprietários/locatários para promoção de atividades sociais, jantares, recepção e aniversários, ou seja, eventos compatíveis com a capacidade e estrutura do local, sendo vedada a reserva das áreas para atividades políticas ou partidárias, religiosas, mercantis e jogos considerados de azar pela legislação pertinente.", "Art. 37. No referido espaço o uso de aparelhos sonoros deve ser feito com moderação em observância à Lei do silêncio, sujeitando-se às sanções penais, civis e administrativas.", "Art. 38. Só será permitida a montagem de brinquedos recreativos (pula-pula, piscina de bolinhas etc.) na área externa do salão.", "Art. 39. Não será permitida a perfuração de tetos e paredes do Salão de Festas, bem como colagem de painéis e adesivos para fixação de arranjos decorativos, ficando os reparos de eventuais danos a cargo do usuário que fez a reserva podendo incorrer em sanção por descumprimento.", "Art. 40. Ao término do uso, o condômino responsável, em conjunto com um funcionário designado pela Administração, efetuará uma conferência das instalações e equipamentos das áreas utilizadas.", "Art. 41. É proibido:\na) Fumar na área interna do Salão de Festas, mesmo com portas e janelas abertas;\nb) A entrada, permanência e circulação de qualquer animal.", "Art. 42. As centrais de ar condicionado serão ligadas somente com 1h (uma hora) de antecedência do evento."]}, {"t": "Das churrasqueiras (Art. 43 a 47)", "a": ["Art. 43. O horário de funcionamento será das 10h (dez horas) às 22h (vinte e duas horas) de domingo a quinta-feira, sexta-feira, sábados e véspera de feriados até 2h (duas horas).", "Art. 44. As churrasqueiras destinam-se ao uso dos condôminos e seus visitantes, devendo ser respeitado o limite de até no máximo 10 visitantes por evento. O condômino que desejar utilizá-la deverá fazer a sua reserva em agenda existente na Administração com até 48h (quarenta e oito horas) de antecedência.", "Art. 45. Na hipótese de desistência do uso, para que outros eventuais interessados possam utilizá-la, a mesma deverá ser comunicada com no mínimo 48h (quarenta e oito horas) de antecedência.", "Art. 46. A utilização de qualquer aparelho que produza som deve ser suspensa após as 22h (vinte e duas horas) de domingo a quinta feira.", "Art. 47. O condômino deverá tomar as providências necessárias para que o ruído oriundo de seus convidados não seja elevado a ponto de perturbar o sossego dos demais moradores, principalmente após as 22h (vinte e duas horas)."]}, {"t": "Das piscinas (Art. 48 a 59)", "a": ["Art. 48. A utilização da piscina é permitida apenas das 05h (cinco horas) às 22h (vinte e duas horas) de terça-feira a domingo e feriados.", "Art. 49. O uso da piscina é privativo dos condôminos e seus convidados.", "Art. 50. Os danos causados quando da utilização da piscina por convidados serão de responsabilidade do respectivo condômino anfitrião.", "Art. 51. A piscina permanecerá fechada para fins de limpeza, manutenção e tratamento de água, um dia por semana, segunda-feira, exceto quando coincidir com feriado.", "Art. 52. A Administração, por necessidade, poderá modificar os dias e horários de funcionamento da piscina, devendo afixar nos quadros de aviso as alterações realizadas.", "Art. 53. É proibido:\na) O uso das piscinas por portadores de moléstia infectocontagiosas ou transmissível, devendo a Administração, quando entender necessário, exigir atestado médico dos usuários;\nb) O uso da piscina por pessoas suadas, untadas com óleo de bronzear ou qualquer produto similar que possa prejudicar o correto funcionamento das bombas, filtro nelas existentes e que possam comprometer a qualidade, limpidez da água ou agregar-se nos azulejos da piscina;\nd) A entrada, permanência e circulação de qualquer animal;\ne) O uso de aparelhos sonoros. Somente será permitido o uso de tais aparelhos com fone de ouvido na área da piscina, a fim de não prejudicar sossego dos demais usuários;\nf) A utilização da piscina para a promoção de festas de qualquer natureza, sendo vedada também a utilização de garrafas, bebidas alcoólicas, ou outros utensílios de vidro nas dependências da piscina e/ou suas imediações;\ng) A prática de jogos esportivos na piscina tais como, frescobol, peteca, bola ou qualquer outro que possa interferir na segurança, sossego ou bem-estar dos demais usuários;\nh) O uso de pranchas e boias que apresentem perigo aos demais usuários, aparelhos de mergulho e/ou acessórios, como nadadeiras etc.;\ni) A utilização da piscina por menores de 10 (dez) anos desacompanhados de pais ou responsáveis;\nl) O ingresso de pessoas em trajes desapropriados na piscina;\nn) Fumar nas piscinas.", "Art. 54. Os usuários da piscina que se comportarem de forma atentatória à moral e aos bons costumes serão retirados da mesma.", "Art. 55. Os equipamentos e demais pertences da piscina constituem patrimônio do condomínio, a todos cabendo a responsabilidade, o zelo e a guarda pelo bem.", "Art. 56. Os móveis e utensílios da piscina (espreguiçadeiras, cadeiras, mesas, etc.) não poderão ser retirados nem utilizados para fins diversos daqueles a que se destinam de suas imediações.", "Art. 57. A Administração tem plenos poderes para tomar as medidas que julgar convenientes para a manutenção da ordem no uso da piscina.", "Art. 58. Os usuários deverão utilizar a ducha e o lava-pés antes de ingressarem na piscina.", "Art. 59. Incumbe a Administração determinar as providências necessárias para o tratamento adequado da água da piscina, a fim de mantê-la permanentemente em grau recomendado de pureza."]}, {"t": "Do campo de futebol e areia (Art. 60 a 71)", "a": ["Art. 60. As áreas de esportes estarão disponíveis para reserva de segunda a sábado das 06h às 22h. Domingos e feriados são destinados somente aos condôminos.\n§ 1º - Para proceder com a reserva deverá solicitar à administração informando a área, data e hora desejada, desde que a data não ultrapasse a semana em que foi feita a solicitação. Será respondido confirmando a reserva ou negando-a, informando os demais horários disponíveis para que o condômino possa escolher outro horário.", "Art. 61. O uso é exclusivo dos condôminos titulares ou moradores, dependentes e seus hóspedes, sendo proibida sua utilização por empregados ou pessoas estranhas ao condomínio.", "Art. 62. O condômino que deseja levar convidados para a prática de esportes deverá informar na portaria com antecedência mínima de 24h (vinte e quatro horas) a lista dos seus convidados.", "Art. 63. Contando com o condômino anfitrião, o limite máximo de jogadores é de:\na) 12 (doze) pessoas para a quadra de areia;\nb) 20 (vinte) pessoas para o campo.", "Art. 64. Os jogos serão realizados de acordo com a exigência da maioria dos condôminos presentes no horário.", "Art. 65. O condômino que desejar utilizar a área deverá solicitar ao funcionário da Administração para que este providencie a abertura da mesma para a sua utilização.", "Art. 66. É proibido:\na) A entrada, permanência e circulação de qualquer animal nestas áreas;\nb) Perturbar o sossego dos demais moradores durante o uso da quadra e campo;\nc) O uso de aparelhos sonoros;\nd) O uso ou porte de garrafas, copos ou de quaisquer outros utensílios de vidro, bem como qualquer tipo de alimento;\ne) O uso da quadra para outras finalidades que não sejam aquelas especificamente a que se destinam, salvo quando entender a Administração.", "Art. 67. No uso do campo não é permitida chuteira que não sejam a society.", "Art. 68. O condomínio, excepcionalmente, poderá determinar a interdição do campo e quadra por ocasião de eventos especiais, bem como prorrogar ou reduzir o horário de utilização do(s) mesmo(s) por motivos que entender justificável.", "Art. 69. Visando a utilização das áreas por outros condôminos, o tempo de cada atividade por determinado grupo de proprietários ou moradores não poderá ser superior a 01h (uma hora), salvo quando não houver outros que queiram utilizá-la.", "Art. 70. Em hipótese alguma poderá haver convidados na quadra e campo sem que o condômino anfitrião esteja presente no local.", "Art. 71. Não poderá haver torneios e jogos cujos integrantes não sejam proprietários ou moradores do condomínio."]}, {"t": "Penalidades e danos (Art. 72 a 78)", "a": ["Art. 72. O descumprimento de qualquer das normas da Convenção, deste Regimento e das decisões do síndico ou dos conselhos publicadas, poderá gerar, contra o faltoso:\na) Advertência;\nb) A imposição de multa de 20% (vinte por cento) a 02 (duas) vezes a taxa de condomínio;\nc) A reiterada prática de atos que caracterizem descumprimento de qualquer das normas poderá gerar, contra o faltoso, a imposição de multa em dobro a anteriormente aplicada;\nd) Suspensão do direito de reserva e/ou uso por 03 (três) a 12 (doze) meses.", "Art. 73. A autuação da infração a qualquer destas normas será feita pelo síndico.", "Art. 74. É assegurado o direito de defesa perante o Conselho Administrativo, cuja petição deverá ser protocolada no prazo de 05 (cinco) dias da comunicação da autuação junto à Administração.", "Art. 75. Não havendo recurso da infração, será cobrado o valor da multa junto com a próxima taxa de condomínio.", "Art. 76. Os danos eventualmente causados pelo condômino infrator ou seus convidados, às instalações do Salão de Festas, Piscinas, Churrasqueiras, Playground, redes do campo, colunas, lâmpadas, alambrado, ruas, etc., deverão ser reparados à custa do condômino responsável pela reserva do local para o evento, cujo valor será apurado pela Administração, sendo obrigatório o pagamento na primeira cobrança da taxa de condomínio.", "Art. 77. A avaliação dos prejuízos causados ao condomínio, para efeito de ressarcimento, será feito por análise de três orçamentos escolhidos e aprovados pelo Conselho Administrativo. A entrega do serviço/bem deverá ser feita para a administração.", "Art. 78. A recusa do pagamento relativo ao ressarcimento das despesas havidas com a reparação dos danos causados acarretará, além de incidência de correção monetária, o acréscimo de 1% (um por cento) de juros ao mês sobre o montante dos danos apurados e a cobrança judicial do débito, com o pagamento de custos de 20% (vinte por cento) a título de honorários advocatícios, bem como a perda do direito de requisição do Salão de Festas e Churrasqueira até o cumprimento das obrigações.\nParágrafo único. Os honorários advocatícios não poderão ser inferiores ao previsto na tabela do OAB. Em qualquer caso a porcentagem dos honorários não poderá ser inferior a (01) um salário mínimo."]}, {"t": "Estacionamento e animais na área de lazer (Art. 85, 86 e 90)", "a": ["Art. 85. É proibido o estacionamento ou circulação irregular de veículos em desobediência à sinalização interna estabelecida. Multa de 50% (cinquenta por cento) da taxa de condomínio.\n§ 1º - O estacionamento da área de lazer é rotativo, podendo o veículo permanecer na área pelo prazo máximo de três dias.\n§ 2º - O estacionamento na área de lazer será para até 10 veículos, sendo que os demais deverão estacionar na área externa.\n§ 3º - O estacionamento será permitido apenas do lado da área de lazer e desde que não atrapalhe a saída de veículos.\n§ 4º - O morador deverá estacionar o veículo na sua garagem. Nas residências que hoje não possuem garagem o condômino, prestador de serviço e seu visitante provisório poderão estacionar na porta de seu imóvel, exceto em frente à saída da garagem do morador do outro lado da rua.\n§ 5º - O hóspede deverá estacionar o veículo na garagem do condômino anfitrião ou no estacionamento da área de lazer.", "Art. 86. É proibido o estacionamento de veículo sob as calçadas, grama da área de lazer e passarela de acesso ao Salão de Festas. Multa de 20% (vinte por cento) a 2 (duas) taxas condominiais.", "Art. 90. É proibido o trânsito de animais na área de lazer. Multa de 30% (trinta por cento) do valor da taxa de condomínio por animal. Em caso de reincidência será cobrado o dobro."]}], "rodape": "Fonte: Regimento Interno do Condomínio Acapulco · Imperatriz/MA"};
 document.addEventListener('DOMContentLoaded', function(){
   const modal=document.getElementById('modal-normas');
   const lista=document.getElementById('normas-lista');
